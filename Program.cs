@@ -7,8 +7,11 @@ builder.WebHost.ConfigureKestrel((context, options) => {
         listenOptions.UseHttps();
     });
 });
+
+builder.Services.AddControllers();
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+//app.MapGet("/", () => "Hello World!");
+app.MapControllers();
 
 app.Run();
