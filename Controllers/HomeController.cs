@@ -36,7 +36,8 @@ public class HomeController : ControllerBase {
     [Route("/studies/{study}/series/{series}/instances/{instance}")]
     public FileStreamResult GetInstance(string study, string series, string instance) {
         string path = $"{seriesMainpath}/series-{series}/image-{instance}.dcm";
-        Stream stream = System.IO.File.OpenRead(path);
+        Stream stream = System.IO.File.Open(path, FileMode.Open, FileAccess.Read);
+ 
         return new FileStreamResult(stream, "application/dicom");
     }
 }
